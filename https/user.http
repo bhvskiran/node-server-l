@@ -1,0 +1,24 @@
+#### API 1 : create user
+POST http://localhost:8000/api/user/create-user
+Content-Type: application/json
+
+{
+  "name": "test2",
+  "email": "test2@test.com",
+  "password": "test@123",
+  "phoneNumber": 9876543210
+}
+
+### API 2 : login user
+POST http://localhost:8000/api/user/login-user
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "test@123"
+}
+
+### API 3 : get user
+GET http://localhost:8000/api/user/get-user
+Content-Type: application/json
+api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTdmMWRhN2Q1MmFjZjE2NDRkMWZiYiIsImlhdCI6MTcwNTUxMDg2OSwiZXhwIjoxNzA2MTE1NjY5fQ.W5IKbaa8C8s3174nIFb-lLbWFaxqAkK9zu-W5p1aJFc
