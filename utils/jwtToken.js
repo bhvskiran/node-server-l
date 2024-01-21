@@ -8,19 +8,9 @@ const sendToken = (user, statusCode, res) => {
     httpOnly: true,
   };
 
-  const userWithoutPassword = {
-    id: user?._id,
-    name: user?.name,
-    email: user?.email,
-    phone_number: user?.phone_number,
-    role: user?.role,
-    created_at: user?.created_at,
-    addresses: user?.addresses,
-  };
-
   res.status(statusCode).json({
     success: true,
-    user: userWithoutPassword,
+    // user: user,
     token,
   });
 };
