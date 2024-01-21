@@ -6,13 +6,43 @@ const { isAuthenticated } = require("../middleware/auth");
 
 const router = express.Router();
 
-// API 1: create the user
+// API 1: login user
+router.post(
+  "/login-user",
+  catchAsyncErrors(async (req, res) => {
+    try {
+      const { userId } = req.body;
+
+      if (!userId) {
+        return res.status(400).json({
+          msg: "Please provide the userId!",
+        });
+      }
+
+      const user = await User.findOne({ user_id: userId });
+
+      if (!user) {
+        return res.status(400).json({
+          msg: "User doesn't exists!",
+        });
+      }
+
+      sendToken(user, 201, res);
+    } catch (error) {
+      return res.status(500).json({
+        msg: error.message,
+      });
+    }
+  })
+);
+
+// API 2: create the user
 router.post("/create-user", async (req, res) => {
   try {
-    const { name, email, password, phoneNumber } = req.body;
-    const userEmail = await User.findOne({ email });
+    const { service, userId, email, firstName, lastName, phoneNumber } = req.body;
+    const user = await User.findOne({ user_id: userId });
 
-    if (userEmail) {
+    if (user) {
       return res.status(400).json({
         msg: "User already exists",
       });
@@ -20,9 +50,11 @@ router.post("/create-user", async (req, res) => {
 
     try {
       let user = await User.create({
-        name: name,
+        service: service,
+        user_id: userId,
         email: email,
-        password: password,
+        first_name: firstName,
+        last_name: lastName,
         phone_number: phoneNumber,
       });
 
@@ -39,50 +71,16 @@ router.post("/create-user", async (req, res) => {
   }
 });
 
-// API 2: login user
-router.post(
-  "/login-user",
-  catchAsyncErrors(async (req, res) => {
-    try {
-      const { email, password } = req.body;
 
-      if (!email || !password) {
-        return res.status(400).json({
-          msg: "Please provide the all fields!",
-        });
-      }
-
-      const user = await User.findOne({ email }).select("+password");
-
-      if (!user) {
-        return res.status(400).json({
-          msg: "User doesn't exists!",
-        });
-      }
-
-      const isPasswordValid = await user.comparePassword(password);
-      if (!isPasswordValid) {
-        return res.status(400).json({
-          msg: "Please provide the correct information",
-        });
-      }
-
-      sendToken(user, 201, res);
-    } catch (error) {
-      return res.status(500).json({
-        msg: error.message,
-      });
-    }
-  })
-);
 
 // API 3 - get user
 router.get(
-  "/get-user",
+  "/get-user/:userId",
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const user = await User.findById(req.user.id).select("-password");
+      const { userId } = req.params
+      const user = await User.findOne({ user_id: userId});
 
       if (!user) {
         return res.status(400).json({

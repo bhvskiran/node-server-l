@@ -1,24 +1,25 @@
-#### API 1 : create user
-POST http://localhost:8000/api/user/create-user
-Content-Type: application/json
-
-{
-  "name": "test2",
-  "email": "test2@test.com",
-  "password": "test@123",
-  "phoneNumber": 9876543210
-}
-
-### API 2 : login user
+#### API 1 : login user
 POST http://localhost:8000/api/user/login-user
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
-  "password": "test@123"
+  "userId": "126"
+}
+
+### API 2 : create user
+POST http://localhost:8000/api/user/create-user
+Content-Type: application/json
+
+{
+  "service" : "facebook",
+  "userId" : "128",
+  "email" : "test1@test.com",
+  "firstName" : "test1_1",
+  "lastName" : "test1_last",
+  "phoneNumber": 9090909090
 }
 
 ### API 3 : get user
-GET http://localhost:8000/api/user/get-user
+GET http://localhost:8000/api/user/get-user/128
 Content-Type: application/json
-api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YTdmMWRhN2Q1MmFjZjE2NDRkMWZiYiIsImlhdCI6MTcwNTUxMDg2OSwiZXhwIjoxNzA2MTE1NjY5fQ.W5IKbaa8C8s3174nIFb-lLbWFaxqAkK9zu-W5p1aJFc
+api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWM5ZTJiNTFjZGJhMWY5MjU0MDE0ZiIsInVzZXJJZCI6IjEyNiIsImVtYWlsIjoidGVzdDFAdGVzdC5jb20iLCJmaXJzdE5hbWUiOiJ0ZXN0MV8xIiwibGFzdE5hbWUiOiJ0ZXN0MV9sYXN0IiwicGhvbmVOdW1iZXIiOjkwOTA5MDkwOTAsImlhdCI6MTcwNTgxMTUyMCwiZXhwIjoxNzA2NDE2MzIwfQ.2Dz6G71VgYhp2zQXMJxOMyenrxG8O9MA4ii6ILQsIRk
