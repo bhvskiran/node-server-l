@@ -3,7 +3,7 @@ POST http://localhost:8000/api/user/login-user
 Content-Type: application/json
 
 {
-  "userId": "126"
+  "userId": "130"
 }
 
 ### API 2 : create user
@@ -12,14 +12,34 @@ Content-Type: application/json
 
 {
   "service" : "facebook",
-  "userId" : "128",
+  "userId" : "130",
   "email" : "test1@test.com",
   "firstName" : "test1_1",
   "lastName" : "test1_last",
-  "phoneNumber": 9090909090
+  "phoneNumber": 9090909090,
+  "dateOfBirth": 1234567890
 }
 
 ### API 3 : get user
-GET http://localhost:8000/api/user/get-user/128
+GET http://localhost:8000/api/user/get-user/130
 Content-Type: application/json
-api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWM5ZTJiNTFjZGJhMWY5MjU0MDE0ZiIsInVzZXJJZCI6IjEyNiIsImVtYWlsIjoidGVzdDFAdGVzdC5jb20iLCJmaXJzdE5hbWUiOiJ0ZXN0MV8xIiwibGFzdE5hbWUiOiJ0ZXN0MV9sYXN0IiwicGhvbmVOdW1iZXIiOjkwOTA5MDkwOTAsImlhdCI6MTcwNTgxMTUyMCwiZXhwIjoxNzA2NDE2MzIwfQ.2Dz6G71VgYhp2zQXMJxOMyenrxG8O9MA4ii6ILQsIRk
+api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjExOWU5ZDk5MzAxOWRjMjMzMGYxZCIsInVzZXJJZCI6IjEzMCIsImVtYWlsIjoidGVzdDFAdGVzdC5jb20iLCJmaXJzdE5hbWUiOiJ0ZXN0MV8xIiwibGFzdE5hbWUiOiJ0ZXN0MV9sYXN0IiwicGhvbmVOdW1iZXIiOjkwOTA5MDkwOTAsImlhdCI6MTcwNjI0MjUwMiwiZXhwIjoxNzA2ODQ3MzAyfQ.D6T8yQxeEvHiGLDMISLGXUEtyEqQjBe75S5DbUrmB3Y
+
+### API 4: add address
+POST http://localhost:8000/api/user/add-address
+Content-Type: application/json
+api_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjExOWU5ZDk5MzAxOWRjMjMzMGYxZCIsInVzZXJJZCI6IjEzMCIsImVtYWlsIjoidGVzdDFAdGVzdC5jb20iLCJmaXJzdE5hbWUiOiJ0ZXN0MV8xIiwibGFzdE5hbWUiOiJ0ZXN0MV9sYXN0IiwicGhvbmVOdW1iZXIiOjkwOTA5MDkwOTAsImlhdCI6MTcwNjI0MjUwMiwiZXhwIjoxNzA2ODQ3MzAyfQ.D6T8yQxeEvHiGLDMISLGXUEtyEqQjBe75S5DbUrmB3Y
+
+{
+  "latitude" : 12.5654323,
+  "longitude" : 80.45678292,
+  "addressType" : "Friend",
+  "country" : "India",
+  "state" : "Telangana",
+  "city" : "Hyderabad",
+  "address1" : "Bandlaguda",
+  "address2" : "",
+  "zipCode" : 543678
+}
+
+### 4\

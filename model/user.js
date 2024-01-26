@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please enter your phone number!"],
   },
+  date_of_birth: {
+    type: Number,
+    required: [true, "Please enter your Date of Birth!"],
+  },
 
   addresses: [
     {
@@ -44,6 +48,9 @@ const userSchema = new mongoose.Schema({
       },
       full_address: {
         country: {
+          type: String,
+        },
+        state: {
           type: String,
         },
         city: {
@@ -63,9 +70,6 @@ const userSchema = new mongoose.Schema({
   ],
   gender: {
     type: String
-  },
-  date_of_birth: {
-    type: Date,
   },
   profilePicUrl: {
     type: String
