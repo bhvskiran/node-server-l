@@ -6,7 +6,7 @@ const connectDatabase = require("./db/database");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // look into it
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 // config

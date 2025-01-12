@@ -1,0 +1,37 @@
+# skiranbhv - BtdMwYMMwVa7ktAq
+### add user
+POST http://localhost:8000/api/user/add-user
+Content-Type: application/json
+
+{
+  "name" : "Sumit Dubey",
+  "email" : "dubey.sumit94.sd@gmail.com",
+  "phoneNumber": 9031393108,
+  "city": "Hyderabad"
+}
+
+### get user
+GET http://localhost:8000/api/user/67825be7e90c7b12c2497ffc
+
+
+### email otp
+POST http://localhost:8000/api/user/67825be7e90c7b12c2497ffc/email-otp
+
+### email verify
+POST http://localhost:8000/api/user/67825be7e90c7b12c2497ffc/email-verify
+Content-Type: application/json
+
+{
+    "otp": 438193
+}
+
+### phone otp
+POST http://localhost:8000/api/user/67825be7e90c7b12c2497ffc/phone-otp
+
+### phone verify
+POST http://localhost:8000/api/user/67825be7e90c7b12c2497ffc/phone-verify
+Content-Type: application/json
+
+{
+    "otp": 472206
+}
